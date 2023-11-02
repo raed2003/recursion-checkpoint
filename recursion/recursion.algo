@@ -1,0 +1,35 @@
+program PalindromeCheck;
+
+function IsPalindrome(word: string): boolean;
+var
+  left, right: integer;
+begin
+  // Stop condition: Empty or single character word is a palindrome
+  if Length(word) <= 1 then
+    Result := true
+  else
+  begin
+    left := 1;
+    right := Length(word);
+    
+    while (left < right) and (word[left] = word[right]) do
+    begin
+      Inc(left);
+      Dec(right);
+    end;
+    
+    Result := (left >= right);
+  end;
+end;
+
+var
+  inputWord: string;
+begin
+  writeln(Enter a word: );
+  readln(inputWord);
+  
+  if IsPalindrome(inputWord) then
+    writeln(inputWord,  is a palindrome.)
+  else
+    writeln(inputWord, is not a palindrome.);
+end.
